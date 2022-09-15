@@ -6,29 +6,30 @@ int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите количество столбцов: ");
 int columns = Convert.ToInt32(Console.ReadLine());
 
-int[,] GetMatrix(int m, int n, int minRandom, int maxRandom)
+void ArreyRandomNumbers(double[,] array)
 {
-    int[,] matrix = new int[m, n];
-    for (int i = 0; i < m; i++) 
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < n; j++) 
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(minRandom, maxRandom + 1);
+            array[i, j] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;
         }
     }
-    return matrix;
 }
-// Напечатать массив
-void PrintMatrix(int[,] inputMatrix)
+
+void PryntArray(double[,] array)
 {
-    for (int i = 0; i < inputMatrix.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < inputMatrix.GetLength(1); j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(inputMatrix[i, j] + "\t"); 
+            Console.Write(array[i, j] +"\t");
         }
-    Console.WriteLine();
+        Console.WriteLine();
     }
 }
-int[,] resultMatrix = GetMatrix(rows, columns, 0, 10);
-PrintMatrix(resultMatrix);
+
+double[,] numbers = new double[rows, columns];
+ArreyRandomNumbers(numbers);
+PryntArray(numbers);
+
